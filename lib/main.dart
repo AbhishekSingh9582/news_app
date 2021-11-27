@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import './provider/article_provider.dart';
 import 'package:provider/provider.dart';
-import './widgets/categories.dart';
+import 'provider/categories.dart';
 import 'screens/opening_page.dart';
 
 void main() {
@@ -14,11 +15,15 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => Categories()),
+        ChangeNotifierProvider(
+          create: (ctx) => ArticleProvider(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'NewsHunt',
         theme: ThemeData(
+          dividerColor: Colors.black,
           primaryColor: Colors.black,
           appBarTheme: const AppBarTheme(
               titleTextStyle: TextStyle(color: Colors.black, fontSize: 20)),

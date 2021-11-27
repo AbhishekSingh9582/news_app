@@ -4,7 +4,7 @@ class Categories with ChangeNotifier {
   final List<Tab> _listTab = [
     getTab('Latest News'),
     getTab('Technology'),
-    getTab('Buisiness'),
+    getTab('Business'),
     getTab('Entertainment'),
     getTab('Sports'),
     getTab('Health'),
