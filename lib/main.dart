@@ -26,7 +26,12 @@ class MyApp extends StatelessWidget {
           dividerColor: Colors.black,
           primaryColor: Colors.black,
           appBarTheme: const AppBarTheme(
-              titleTextStyle: TextStyle(color: Colors.black, fontSize: 20)),
+              iconTheme: IconThemeData(color: Colors.black),
+              actionsIconTheme: IconThemeData(color: Colors.black),
+              titleTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 26.5,
+                  fontWeight: FontWeight.bold)),
           primaryTextTheme: const TextTheme(
               headline1: TextStyle(fontSize: 18, color: Colors.black),
               bodyText1: TextStyle(fontSize: 18, color: Colors.black)),

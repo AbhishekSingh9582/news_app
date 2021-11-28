@@ -9,14 +9,15 @@ class Article with ChangeNotifier {
   final String content;
   final String publishedAt;
 
-  Article(
-      {required this.sourceName,
-      required this.title,
-      required this.description,
-      required this.url,
-      required this.urlToImage,
-      required this.content,
-      required this.publishedAt});
+  Article({
+    required this.sourceName,
+    required this.title,
+    required this.description,
+    required this.url,
+    required this.urlToImage,
+    required this.content,
+    required this.publishedAt,
+  });
 }
 
 

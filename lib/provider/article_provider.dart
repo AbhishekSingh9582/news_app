@@ -37,15 +37,21 @@ class ArticleProvider with ChangeNotifier {
               article['url'] != null &&
               article['title'] != null &&
               article['publishedAt'] != null) {
+            String temp = article['publishedAt'];
+
+            String dateTime = "    " +
+                temp.substring(0, temp.indexOf('T')) +
+                "    " +
+                temp.substring(temp.indexOf('T') + 1, temp.length - 1);
             tempList.add(
               Article(
                 sourceName: article["source"]["name"],
                 title: article["title"],
                 description: article["description"],
-                content: article["content"],
+                content: article['content'],
                 url: article["url"],
                 urlToImage: article["urlToImage"],
-                publishedAt: article["publishedAt"],
+                publishedAt: dateTime,
               ),
             );
           }

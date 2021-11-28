@@ -46,7 +46,9 @@ class _MyHomePageState extends State<MyHomePage>
       appBar: AppBar(
         title: const Text(
           'NewsHunt',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -78,6 +80,7 @@ class _MyHomePageState extends State<MyHomePage>
           ),
         ],
         body: TabBarView(
+          physics: const ClampingScrollPhysics(),
           controller: _tabController,
           children: const <Widget>[
             CategoriesPages(''),
