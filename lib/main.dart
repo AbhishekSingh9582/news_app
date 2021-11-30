@@ -23,9 +23,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'NewsHunt',
         theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
           dividerColor: Colors.black,
           primaryColor: Colors.black,
           appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.white,
               iconTheme: IconThemeData(color: Colors.black),
               actionsIconTheme: IconThemeData(color: Colors.black),
               titleTextStyle: TextStyle(

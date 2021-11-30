@@ -13,12 +13,14 @@ class DetailArticle extends StatefulWidget {
 class _DetailArticleState extends State<DetailArticle> {
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
+
   final _key = UniqueKey();
   bool _isLoading = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -28,9 +30,13 @@ class _DetailArticleState extends State<DetailArticle> {
       body: Stack(children: [
         WebView(
           key: _key,
+          javascriptMode: JavascriptMode.unrestricted,
           initialUrl: widget.url,
-          onWebViewCreated: (WebViewController webViewController) {
+          onWebViewCreated: (WebViewController webViewController) async {
             _controller.complete(webViewController);
+
+            // await _controller.runJavascript(
+            //    "document.getElementsByTagName('header')[0].style.display='none'");
           },
           onPageFinished: (url) => setState(() {
             _isLoading = false;
