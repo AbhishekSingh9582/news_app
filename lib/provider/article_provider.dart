@@ -18,12 +18,13 @@ class ArticleProvider with ChangeNotifier {
       "country": 'in',
       "category": category,
     });
-    final response = await http.get(url);
-    Map<String, dynamic> result =
-        json.decode(response.body) as Map<String, dynamic>;
-
-    print(json.decode(response.body));
     try {
+      final response = await http.get(url);
+      Map<String, dynamic> result =
+          json.decode(response.body) as Map<String, dynamic>;
+
+      print(json.decode(response.body));
+
       if (result["status"] == "ok") {
         List<Article> tempList = [];
         print('result article length =${result["articles"].length}');
@@ -70,7 +71,7 @@ class ArticleProvider with ChangeNotifier {
         }
       }
     } catch (error) {
-      print(error);
+      print('My error is $error');
       rethrow;
     }
   }

@@ -15,7 +15,8 @@ class _DetailArticleState extends State<DetailArticle> {
       Completer<WebViewController>();
 
   final _key = UniqueKey();
-  bool _isLoading = true;
+
+  bool _isError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +27,30 @@ class _DetailArticleState extends State<DetailArticle> {
         title: const Text('NewsHunt'),
         centerTitle: true,
       ),
-      body: Stack(children: [
-        WebView(
-          key: _key,
-          javascriptMode: JavascriptMode.unrestricted,
-          initialUrl: widget.url,
-          onWebViewCreated: (WebViewController webViewController) async {
-            _controller.complete(webViewController);
+      body: _isError
+          ? const AlertDialog(
+              contentPadding: EdgeInsets.fromLTRB(24, 30, 24, 30),
+              content:
+                  Text("Oops.. Looks like there's no\n    internet connection"),
+            )
+          : Center(
+              child: WebView(
+                key: _key,
+                javascriptMode: JavascriptMode.unrestricted,
+                initialUrl: widget.url,
+                onWebResourceError: (error) {
+                  setState(() {
+                    _isError = true;
+                  });
+                },
+                onWebViewCreated: (WebViewController webViewController) async {
+                  _controller.complete(webViewController);
 
-            // await _controller.runJavascript(
-            //    "document.getElementsByTagName('header')[0].style.display='none'");
-          },
-          onPageFinished: (url) => setState(() {
-            _isLoading = false;
-          }),
-        ),
-        _isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Stack(),
-      ]),
+                  // await _controller.runJavascript(
+                  //    "document.getElementsByTagName('header')[0].style.display='none'");
+                },
+              ),
+            ),
     );
   }
 }
