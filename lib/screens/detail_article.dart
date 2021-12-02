@@ -20,10 +20,9 @@ class _DetailArticleState extends State<DetailArticle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         title: const Text('NewsHunt'),
         centerTitle: true,
       ),

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:news_hunt/provider/theme_model.dart';
 import './provider/article_provider.dart';
+import 'package:theme_provider/theme_provider.dart';
 import 'package:provider/provider.dart';
+import './provider/my_themes.dart';
 import 'provider/categories.dart';
+import './provider/theme_prefrences.dart';
 import 'screens/opening_page.dart';
 
 void main() {
@@ -16,32 +20,20 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => Categories()),
         ChangeNotifierProvider(
+          create: (ctx) => ThemeModel(),
+        ),
+        ChangeNotifierProvider(
           create: (ctx) => ArticleProvider(),
         )
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'NewsHunt',
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          dividerColor: Colors.black,
-          primaryColor: Colors.black,
-          appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white,
-              iconTheme: IconThemeData(color: Colors.black),
-              actionsIconTheme: IconThemeData(color: Colors.black),
-              titleTextStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 26.5,
-                  fontWeight: FontWeight.bold)),
-          primaryTextTheme: const TextTheme(
-              headline1: TextStyle(fontSize: 18, color: Colors.black),
-              bodyText1: TextStyle(fontSize: 18, color: Colors.black)),
-          //  textTheme: const TextTheme(
-          //      headline1: TextStyle(fontSize: 18, color: Colors.black)),
-          primarySwatch: Colors.blue,
+      child: Consumer<ThemeModel>(
+        builder: (context, themeNotifier, _) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'NewsHunt',
+          theme:
+              themeNotifier.isDark ? MyThemes.darkTheme : MyThemes.lightTheme,
+          home: const MyHomePage(),
         ),
-        home: const MyHomePage(),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'detail_article.dart';
 import '../provider/article_provider.dart';
 
@@ -21,7 +22,11 @@ class _CategoriesPagesState extends State<CategoriesPages> {
 
   Future obtainArticleFuture() {
     return Provider.of<ArticleProvider>(context, listen: false)
-        .getArticle(category: widget.category);
+        .getArticle(category: widget.category)
+        .onError((error, stackTrace) => showModalBottomSheet(
+            context: context,
+            builder: (ctx) =>
+                const Center(child: Text('Check Network Connection'))));
   }
 
   @override
@@ -59,10 +64,10 @@ class _CategoriesPagesState extends State<CategoriesPages> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Divider(
-                            thickness: 0.1,
+                            thickness: 0.2,
                           ),
                           const SizedBox(
-                            height: 3,
+                            height: 3.5,
                           ),
                           Padding(
                               padding:
@@ -70,8 +75,7 @@ class _CategoriesPagesState extends State<CategoriesPages> {
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text(
-                                        '${article.getList[ind].sourceName}   '),
+                                    Text('${list[ind].sourceName}   '),
                                     const Icon(
                                       Icons.check_circle,
                                       size: 18,
@@ -80,7 +84,10 @@ class _CategoriesPagesState extends State<CategoriesPages> {
                                     const Spacer(),
                                     //Container(child:OutlinedButton.styleFrom()),
                                     OutlinedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Share.share(
+                                              '${list[ind].title}\n\nSource : ${list[ind].sourceName} via NewsHunt\n\nFor Detail \n${list[ind].url}');
+                                        },
                                         style: style,
                                         child: const Text(
                                           'Share',
@@ -111,20 +118,18 @@ class _CategoriesPagesState extends State<CategoriesPages> {
                             padding: const EdgeInsets.only(left: 15, right: 15),
                             child: Text(list[ind].title,
                                 style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 19,
-                                    fontWeight: FontWeight.bold)),
+                                    fontSize: 19, fontWeight: FontWeight.bold)),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
                                 left: 15, right: 15, top: 6),
                             child: Text(
                               list[ind].description,
-                              style: const TextStyle(color: Colors.black54),
+                              // style: const TextStyle(color: Colors.black54),
                             ),
                           ),
                           const SizedBox(
-                            height: 8.8,
+                            height: 9,
                           ),
                         ],
                       ),

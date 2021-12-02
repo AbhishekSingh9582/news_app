@@ -71,6 +71,7 @@ class ArticleProvider with ChangeNotifier {
       }
     } catch (error) {
       print(error);
+      rethrow;
     }
   }
 }
