@@ -23,7 +23,6 @@ class _DetailArticleState extends State<DetailArticle> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        // backgroundColor: Colors.transparent,
         title: const Text('NewsHunt'),
         centerTitle: true,
       ),

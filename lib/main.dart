@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:news_hunt/provider/theme_model.dart';
 import './provider/article_provider.dart';
-import 'package:theme_provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 import './provider/my_themes.dart';
 import 'provider/categories.dart';
-import './provider/theme_prefrences.dart';
 import 'screens/opening_page.dart';
 
 void main() {

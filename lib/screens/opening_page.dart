@@ -24,7 +24,6 @@ class _MyHomePageState extends State<MyHomePage>
     super.initState();
     tabList = Provider.of<Categories>(context, listen: false).listTab;
     _tabController = TabController(length: tabList.length, vsync: this);
-    // Provider.of<ArticleProvider>(context, listen: false).getArticle();
     _scrollController = ScrollController();
     _tabController!.addListener(smoothScrollToTop);
   }

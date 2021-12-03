@@ -11,8 +11,6 @@ class ArticleProvider with ChangeNotifier {
   }
 
   Future<void> getArticle({String category = ''}) async {
-    //https://newsapi.org/v2/top-headlines?country=in&apiKey=923e5f7b15ef4cc6b70811f9c18ccf91
-
     final url = Uri.https("newsapi.org", '/v2/top-headlines', {
       "apiKey": "923e5f7b15ef4cc6b70811f9c18ccf91",
       "country": 'in',
@@ -23,14 +21,14 @@ class ArticleProvider with ChangeNotifier {
       Map<String, dynamic> result =
           json.decode(response.body) as Map<String, dynamic>;
 
-      print(json.decode(response.body));
+      //  print(json.decode(response.body));
 
       if (result["status"] == "ok") {
         List<Article> tempList = [];
-        print('result article length =${result["articles"].length}');
+        // print('result article length =${result["articles"].length}');
 
         result["articles"].forEach((article) {
-          print('inside status ok for each loop condition true');
+          //  print('inside status ok for each loop condition true');
           if (article['source']['name'] != null &&
               article['description'] != null &&
               article['urlToImage'] != null &&
@@ -57,14 +55,11 @@ class ArticleProvider with ChangeNotifier {
             );
           }
         });
-        print('outsideLoop');
+        // print('outsideLoop');
         _artList = tempList;
         if (tempList.isNotEmpty) {
-          print('inside tempList and it not empty');
-          for (var item in _artList) {
-            print('inside item');
-            print("${item.title}\n");
-          }
+          // print('inside tempList and it not empty');
+
           notifyListeners();
         } else {
           print('list is empty ....');
