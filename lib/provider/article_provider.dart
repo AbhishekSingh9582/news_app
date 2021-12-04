@@ -12,7 +12,7 @@ class ArticleProvider with ChangeNotifier {
 
   Future<void> getArticle({String category = ''}) async {
     final url = Uri.https("newsapi.org", '/v2/top-headlines', {
-      "apiKey": "923e5f7b15ef4cc6b70811f9c18ccf91",
+      "apiKey": "",
       "country": 'in',
       "category": category,
     });
