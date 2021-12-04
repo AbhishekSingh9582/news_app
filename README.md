@@ -1,16 +1,18 @@
-# news_hunt
+# News App
 
-A new Flutter project.
+- A Flutter News app which organises and highlights all the latest news, headlines belong to India so that you can be up to date with all the stories across all your    favourite topics covering science, entertainment, sports, buisness and more.
+- Features added to App
+  - Switch between Dark and Light theme 
+  - Share articles to other
+  - View Full article in Web
 
-## Getting Started
+## For Clone
+- 1. Get Your own news Api Key from https://newsapi.org . 
+  2. Write your api key in http request syntax which you can find in provider->article_provider.dart file
 
-This project is a starting point for a Flutter application.
+## Preview
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://user-images.githubusercontent.com/69047076/144719517-4ba01686-3be0-4280-ba2f-bff644dc8c93.mp4
+
